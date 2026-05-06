@@ -1,0 +1,6 @@
+# Latest stable versions for core frontend stack
+stack:
+  react: "19.2.6"
+  nextjs: "16.2.5"
+  typescript: "6.0.3"
+  tailwindcss: "4.2.4"
