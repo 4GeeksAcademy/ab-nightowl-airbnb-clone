@@ -7,48 +7,28 @@ Primary target customers are millennials and Gen Z travelers aged 18–40, who p
 Build a 3-pages Airbnb UI clone. 
 Mobile-first app.
 
-## Mobile Layout
+## Layout
 
 - Header:
-    1. Search bar component: 
-        - Centered, full-width
-        - Expand to full page on click
-        - 3 search tabs: identical as the 3 nav links (see further)
-            1. Accommodations: 3 filters (3 rows)
-                1. "Where" (optional): 
-                    - Expanded by default
-                    - Search bar with suggested destinations below
-                2. "When" to add dates (optional): 
-                    - Date-picker with different date range options (exact dates, various +/- days margins)
-                    - "Reset" button
-                    - "Next" button to go to thrid filter
-                3. "Who" to add guests (optional): 
-                    - Categories: Adults / Children / Infants / Pets
-                    - 1 row for each category: 
-                        - Left: category label with age range below, 
-                        - Right: qty input
-            2. Experiences: same filters as "Accommodations" tab except diffs below:
-                - Filter #2: Date-picker without date range options (simpler)
-                - Filter #3: No Pets for guests
-            3. Services: same filters as "Accommodations" tab except diffs below:
-                - Filter #2: Date-picker without date range options (simpler)
-                - Filter #3: "What" (instead of "Who") => "Type of service" label (title) when expanded:
-                    - Options (badges): Photography / Massage / Spa / Gastronomy...
-        - On tablet/desktop: the 3 tabs (see above) are visible in search bar
-        - (Mobile only) Default search footer for filters 1 & 3: 
-            - Left: "Clear all" button
-            - Right: "Search" button
-    2. Navbar: 
-        - 3 main links: 
-            - Accommodations
-            - Experiences
-            - Services
-        - Links container centered
-        - Each link with icon + label below
-        - Links shrink to labels only when scrolling page content
-        - On tablet/desktop: 
-            - Center: Navbar above Search bar
-            - Left: Logo (and company name on desktop)
+    1. Header:
+        - Always visible, sticky at the top.
+        - Left: Logo (Alexbnb), always visible (mobile & desktop).
+        - Search bar component:
+            - Desktop/tablet: white, rounded, centered, compact, 3 side-by-side filters (Where, When, Who/What), tabs above.
+            - Mobile: tabs (icon + label) above, search bar as a card with 3 buttons (Where, When, Who/What) showing a dynamic summary, large Search button below.
+            - Clicking a filter or Search opens a full-screen overlay with the filter content.
+            - Dynamic summary in each filter (destination, dates, guests/services).
+            - Suggestions under "Where" (popular destinations), calendar under "When", guest/service selector under "Who/What".
+            - Search button always visible.
+            - Responsive: desktop = centered, mobile = full width.
+            - Mobile overlay footer: "Clear all" on the left, "Search" on the right.
+            - Tabs:
+                - "Accommodations": 3 filters (Where, When, Who)
+                - "Experiences": 3 filters (Where, When, Who)
+                - "Services": 3 filters (Where, When, What)
+            - Tabs always visible above the search bar on both desktop/tablet AND mobile.
+        - No main navbar on mobile (only logo and search bar).
+        - On desktop/tablet: navbar centered above the search bar (if needed).
 
 - Footer:
     - 3 main sections:
@@ -78,6 +58,7 @@ Mobile-first app.
     - Each row = 1 Accommodation list component:
         1. Header: title with icon btn to see
         2. Accommodation list container component: list of accommodation cards
+    - Each AccommodationList must include at least 7 unique items.
     - Accommodation card component:
         - Featured photo
         - Favorite icon btn
@@ -103,3 +84,5 @@ Mobile-first app.
 - Functional components — no class components.
 - Use Next.js navigation links, and folder structure conventions (`/app`, `/components`, `/types`)
 - Create a style that is slightly different from Airbnb.
+- All UI text must be in English.
+- On desktop, page content must be wrapped in a centered wide container.
