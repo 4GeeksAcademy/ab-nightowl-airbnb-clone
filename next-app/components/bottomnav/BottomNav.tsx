@@ -5,9 +5,9 @@ import Link from "next/link";
 import useScrollDirection from "../hooks/useScrollDirection";
 
 const NAV = [
-  { label: "Explorer", href: "/", icon: <FaCompass /> },
-  { label: "Favoris", href: "/favorites", icon: <FaHeart /> },
-  { label: "Connexion", href: "/signin", icon: <FaUser /> },
+  { label: "Explore", href: "/", icon: <FaCompass /> },
+  { label: "Favorites", href: "/favorites", icon: <FaHeart /> },
+  { label: "Sign in", href: "/signin", icon: <FaUser /> },
 ];
 
 export default function BottomNav() {

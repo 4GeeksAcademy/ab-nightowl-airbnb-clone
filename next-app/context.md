@@ -11,7 +11,7 @@ Mobile-first app.
 
 - Header:
     - Always visible, sticky at the top.
-    - Left: Logo (Alexbnb), always visible (mobile & desktop).
+    - Left: Logo (SVG icon) before company name (Alexbnb), always visible (mobile & desktop).
     - Search bar component:
         - Desktop/tablet: white, rounded, centered, compact, 3 side-by-side filters (Where, When, Who/What), tabs above.
         - Mobile: tabs (icon + label) above, search bar as a card with 3 buttons (Where, When, Who/What) showing a dynamic summary, large Search button below.
@@ -28,6 +28,7 @@ Mobile-first app.
         - Tabs always visible above the search bar on both desktop/tablet AND mobile.
     - No main navbar on mobile (only logo and search bar).
     - On desktop/tablet: navbar centered above the search bar (if needed).
+    - On desktop/tablet: user menu icons (Favorites, Sign in) must appear at the right of the header.
 
 - Footer:
     - 3 main sections:
