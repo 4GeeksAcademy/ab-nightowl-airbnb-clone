@@ -190,7 +190,10 @@ export default function SearchBar() {
         {/* Mobile footer */}
         <div className="flex justify-between mt-auto pt-4 border-t">
           <button className="text-gray-700 font-semibold" onClick={clearAll}>Clear all</button>
-          <button className="bg-primary text-white px-6 py-3 rounded-full font-semibold shadow flex items-center gap-2">
+          <button
+            className="bg-primary text-white px-6 py-3 rounded-full font-semibold shadow flex items-center gap-2"
+            onClick={() => setMobileOpen(false)}
+          >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z" />
             </svg>

@@ -58,6 +58,7 @@ Mobile-first app.
         - The "Where" filter must use useState to track the typed value.
         - Listing cards on home must be stored in local state and filtered in real time on every keystroke.
         - The active location must be tracked with useState and visually highlighted when selected.
+        - On mobile, clicking the Search button in the overlay must close (hide) the mobile popover.
     - Each row = 1 Accommodation list component:
         1. Header: title with icon btn to see
         2. Accommodation list container component: list of accommodation cards
