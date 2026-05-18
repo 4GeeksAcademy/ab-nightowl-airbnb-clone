@@ -24,11 +24,11 @@ export default function AccommodationList({ title, items }: { title: string; ite
       <div className="flex items-center justify-between mb-2">
         <h2 className="text-xl font-semibold">{title}</h2>
         <div className="flex items-center gap-2">
-          <button className="text-sm text-primary font-medium">Voir tout</button>
+          <button className="text-sm text-primary font-medium">See all</button>
           <div className="hidden md:flex items-center gap-1">
             <button
               type="button"
-              aria-label="Précédent"
+              aria-label="Previous"
               className="h-8 w-8 rounded-full border border-gray-200 text-gray-600 hover:text-primary"
               onClick={() => scrollByCard("left")}
             >
@@ -36,7 +36,7 @@ export default function AccommodationList({ title, items }: { title: string; ite
             </button>
             <button
               type="button"
-              aria-label="Suivant"
+              aria-label="Next"
               className="h-8 w-8 rounded-full border border-gray-200 text-gray-600 hover:text-primary"
               onClick={() => scrollByCard("right")}
             >

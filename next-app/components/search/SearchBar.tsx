@@ -7,6 +7,7 @@ import WhenFilter from "./WhenFilter";
 import WhoFilter from "./WhoFilter";
 import WhatServiceFilter from "./WhatServiceFilter";
 import ReactDOM from "react-dom";
+import { useSearchLocation } from "./SearchLocationContext";
 
 const TABS = [
   { label: "Accommodations", value: "accommodations", icon: "🏠" },
@@ -21,10 +22,20 @@ export default function SearchBar() {
   const [popover, setPopover] = useState<null | "where" | "when" | "who">(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileStep, setMobileStep] = useState(0); // 0: Where, 1: When, 2: Who/What
-  const [where, setWhere] = useState("");
+  const { searchLocation, setSearchLocation, activeLocation, setActiveLocation } = useSearchLocation();
+  const [where, setWhere] = useState(searchLocation);
   const [when, setWhen] = useState<{ start?: string; end?: string; margin?: string }>({});
   const [who, setWho] = useState<Record<string, number>>({});
   const [what, setWhat] = useState<string[]>([]);
+
+  const handleWhereChange = (value: string) => {
+    setWhere(value);
+    setSearchLocation(value);
+  };
+
+  const handleActiveLocationChange = (value: string) => {
+    setActiveLocation(value);
+  };
 
   // Dynamic summaries
   const whereSummary = where || "Search destinations";
@@ -40,6 +51,8 @@ export default function SearchBar() {
 
   const clearAll = () => {
     setWhere("");
+    setSearchLocation("");
+    setActiveLocation("");
     setWhen({});
     setWho({});
     setWhat([]);
@@ -63,7 +76,14 @@ export default function SearchBar() {
             ×
           </button>
         </div>
-        {popover === "where" && <WhereFilter value={where} onChange={setWhere} />}
+        {popover === "where" && (
+          <WhereFilter
+            value={where}
+            activeLocation={activeLocation}
+            onChange={handleWhereChange}
+            onSelectLocation={handleActiveLocationChange}
+          />
+        )}
         {popover === "when" && (
           <WhenFilter value={when} onChange={setWhen} withRange={tab === "accommodations"} />
         )}
@@ -124,7 +144,16 @@ export default function SearchBar() {
             </div>
             <span className="text-xl text-primary">{mobileStep === 0 ? "▼" : ""}</span>
           </button>
-          {mobileStep === 0 && <div className="mt-2"><WhereFilter value={where} onChange={setWhere} /></div>}
+          {mobileStep === 0 && (
+            <div className="mt-2">
+              <WhereFilter
+                value={where}
+                activeLocation={activeLocation}
+                onChange={handleWhereChange}
+                onSelectLocation={handleActiveLocationChange}
+              />
+            </div>
+          )}
           {/* When */}
           <button
             type="button"

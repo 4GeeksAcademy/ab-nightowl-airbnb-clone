@@ -10,25 +10,24 @@ Mobile-first app.
 ## Layout
 
 - Header:
-    1. Header:
-        - Always visible, sticky at the top.
-        - Left: Logo (Alexbnb), always visible (mobile & desktop).
-        - Search bar component:
-            - Desktop/tablet: white, rounded, centered, compact, 3 side-by-side filters (Where, When, Who/What), tabs above.
-            - Mobile: tabs (icon + label) above, search bar as a card with 3 buttons (Where, When, Who/What) showing a dynamic summary, large Search button below.
-            - Clicking a filter or Search opens a full-screen overlay with the filter content.
-            - Dynamic summary in each filter (destination, dates, guests/services).
-            - Suggestions under "Where" (popular destinations), calendar under "When", guest/service selector under "Who/What".
-            - Search button always visible.
-            - Responsive: desktop = centered, mobile = full width.
-            - Mobile overlay footer: "Clear all" on the left, "Search" on the right.
-            - Tabs:
-                - "Accommodations": 3 filters (Where, When, Who)
-                - "Experiences": 3 filters (Where, When, Who)
-                - "Services": 3 filters (Where, When, What)
-            - Tabs always visible above the search bar on both desktop/tablet AND mobile.
-        - No main navbar on mobile (only logo and search bar).
-        - On desktop/tablet: navbar centered above the search bar (if needed).
+    - Always visible, sticky at the top.
+    - Left: Logo (Alexbnb), always visible (mobile & desktop).
+    - Search bar component:
+        - Desktop/tablet: white, rounded, centered, compact, 3 side-by-side filters (Where, When, Who/What), tabs above.
+        - Mobile: tabs (icon + label) above, search bar as a card with 3 buttons (Where, When, Who/What) showing a dynamic summary, large Search button below.
+        - Clicking a filter or Search opens a full-screen overlay with the filter content.
+        - Dynamic summary in each filter (destination, dates, guests/services).
+        - Suggestions under "Where" (popular destinations), calendar under "When", guest/service selector under "Who/What".
+        - Search button always visible.
+        - Responsive: desktop = centered, mobile = full width.
+        - Mobile overlay footer: "Clear all" on the left, "Search" on the right.
+        - Tabs:
+            - "Accommodations": 3 filters (Where, When, Who)
+            - "Experiences": 3 filters (Where, When, Who)
+            - "Services": 3 filters (Where, When, What)
+        - Tabs always visible above the search bar on both desktop/tablet AND mobile.
+    - No main navbar on mobile (only logo and search bar).
+    - On desktop/tablet: navbar centered above the search bar (if needed).
 
 - Footer:
     - 3 main sections:
@@ -55,6 +54,10 @@ Mobile-first app.
         - Popular homes nearby based on current geolocation
         - Great deals
         - Other accommodation sections: accommodations in trendy cities of current country mixed with other major tourist destinations of neighbouring countries
+    - Homepage search behavior:
+        - The "Where" filter must use useState to track the typed value.
+        - Listing cards on home must be stored in local state and filtered in real time on every keystroke.
+        - The active location must be tracked with useState and visually highlighted when selected.
     - Each row = 1 Accommodation list component:
         1. Header: title with icon btn to see
         2. Accommodation list container component: list of accommodation cards

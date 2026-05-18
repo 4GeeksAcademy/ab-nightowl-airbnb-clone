@@ -1,5 +1,9 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import AccommodationList from "../components/accommodation/AccommodationList";
 import type { Accommodation } from "../components/accommodation/types/Accommodation";
+import { useSearchLocation } from "../components/search/SearchLocationContext";
 
 const popular: Accommodation[] = [
   {
@@ -211,11 +215,37 @@ const trendy: Accommodation[] = [
 ];
 
 export default function Home() {
+  const { searchLocation } = useSearchLocation();
+  const [visiblePopular, setVisiblePopular] = useState<Accommodation[]>(popular);
+  const [visibleDeals, setVisibleDeals] = useState<Accommodation[]>(deals);
+  const [visibleTrendy, setVisibleTrendy] = useState<Accommodation[]>(trendy);
+
+  useEffect(() => {
+    const normalizedQuery = searchLocation.trim().toLowerCase();
+
+    if (!normalizedQuery) {
+      setVisiblePopular(popular);
+      setVisibleDeals(deals);
+      setVisibleTrendy(trendy);
+      return;
+    }
+
+    setVisiblePopular(
+      popular.filter((item) => item.location.toLowerCase().includes(normalizedQuery)),
+    );
+    setVisibleDeals(
+      deals.filter((item) => item.location.toLowerCase().includes(normalizedQuery)),
+    );
+    setVisibleTrendy(
+      trendy.filter((item) => item.location.toLowerCase().includes(normalizedQuery)),
+    );
+  }, [searchLocation]);
+
   return (
     <main className="p-4 space-y-8">
-      <AccommodationList title="Popular near you" items={popular} />
-      <AccommodationList title="Great deals" items={deals} />
-      <AccommodationList title="Trendy cities & destinations" items={trendy} />
+      <AccommodationList title="Popular near you" items={visiblePopular} />
+      <AccommodationList title="Great deals" items={visibleDeals} />
+      <AccommodationList title="Trendy cities & destinations" items={visibleTrendy} />
     </main>
   );
 }

@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import BottomNav from "../components/bottomnav/BottomNav";
+import { SearchLocationProvider } from "../components/search/SearchLocationContext";
 
 export default function RootLayout({
   children,
@@ -19,12 +20,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-white text-gray-900 pb-16 sm:pb-0">
-        <Header />
-        <div className="w-full sm:w-full md:max-w-6xl md:mx-auto">
-          {children}
-        </div>
-        <Footer />
-        <BottomNav />
+        <SearchLocationProvider>
+          <Header />
+          <div className="w-full sm:w-full md:max-w-6xl md:mx-auto">
+            {children}
+          </div>
+          <Footer />
+          <BottomNav />
+        </SearchLocationProvider>
       </body>
     </html>
   );
